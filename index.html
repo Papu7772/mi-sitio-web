@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AnimeLab - Aprendiendo HTML, CSS y JavaScript</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="assets/logo pag.webp">
+</head>
+
+<body>
+  <button id="openAbout" class="about-button">Acerca de AnimeLab</button>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">AnimeLab</h1>
+
+      <nav class="main-nav" id="mainNav">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false">☰</button>
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link">Inicio</a></li>
+          <li><a href="#characters" class="nav-link">Personajes</a></li>
+          <li><a href="#gallery" class="nav-link">Galería</a></li>
+          <li><a href="#contact" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <button id="themeBtn" class="theme-btn" title="Cambiar tema">🌙</button>
+    </div>
+  </header>
+  <main>
+    <section id="home" class="hero container">
+      <h2>Bienvenidos a AnimeLab</h2>
+      <p>Este sitio sirve para que los estudiantes evalúen la integración de <strong>HTML</strong>, <strong>CSS</strong> y <strong>JavaScript</strong>.</p>
+      <div class="quick-actions">
+        <button id="showHint" class="btn">Ver pista (JS)</button>
+        <button onclick="document.querySelector('#gallery').scrollIntoView({behavior:'smooth'})" class="btn">Ir a Galería</button>
+      </div>
+    </section>
+
+    <section id="characters" class="container cards">
+      <h3>Personajes destacados</h3>
+
+      <div class="card-grid">
+
+        <article class="card">
+          <div class="avatar avatar-1"></div>
+          <h4>Hinata</h4>
+          <p>Estudiante ninja con habilidades visuales.</p>
+          <button class="btn btn-outline" onclick="showProfile('Hinata')">Ver Perfil</button>
+        </article>
+
+        <article class="card">
+          <div class="avatar avatar-2"></div>
+          <h4>Ryuu Lion</h4>
+          <p>Aventurera experta, fuerte en tácticas defensivas.</p>
+          <button class="btn btn-outline" onclick="showProfile('Ryuu Lion')">Ver Perfil</button>
+        </article>
+
+        <article class="card">
+          <div class="avatar avatar-3"></div>
+          <h4>Kotone</h4>
+          <p>Hermana de Ayane.</p>
+          <button class="btn btn-outline" onclick="showProfile('Kotone')">Ver Perfil</button>
+        </article>
+
+        <article class="card">
+          <div class="avatar avatar-4"></div>
+          <h4>Hatsune Miku</h4>
+          <p>Cantante virtual famosa.</p>
+          <button class="btn btn-outline" onclick="showProfile('Hatsune Miku')">Ver Perfil</button>
+        </article>
+
+      </div>
+    </section>
+
+
+    <section id="gallery" class="container">
+      <h3>Galería</h3>
+      <p>Haz click en cualquier imagen para abrir una vista ampliada.</p>
+
+      <div class="gallery-grid">
+
+        <figure class="thumb" onclick="openLightbox('assets/Portada Danmachi.jpg')">
+          <img src="assets/Portada Danmachi.jpg" alt="">
+          <figcaption>Portada del anime Danmachi</figcaption>
+        </figure>
+
+        <figure class="thumb" onclick="openLightbox('assets/the_last.jpg')">
+          <img src="assets/the_last.jpg" alt="">
+          <figcaption>Portada Naruto The Last</figcaption>
+        </figure>
+
+        <figure class="thumb" onclick="openLightbox('assets/portada miku.jpg')">
+          <img src="assets/portada miku.jpg" alt="">
+          <figcaption>Póster de Hatsune Miku</figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+
+    <section id="news" class="container cards">
+      <h3>Próximos Estrenos</h3>
+
+      <div class="card-grid">
+
+        <article class="card">
+          <div class="avatar news-avatar">
+            <img src="assets/my hero academia.jpg" alt="">
+          </div>
+          <h4>My Hero Academia</h4>
+          <p>Mundo donde todos tienen superpoderes llamados “quirks”.</p>
+          <button class="btn btn-outline" onclick="showProfile('My hero academia')">Leer más</button>
+        </article>
+
+        <article class="card">
+          <div class="avatar news-avatar">
+            <img src="assets/portada spy x family.jpeg" alt="">
+          </div>
+          <h4>SPY x FAMILY</h4>
+          <p>Twilight debe formar una familia falsa para su misión.</p>
+          <button class="btn btn-outline" onclick="showProfile('SPY x FAMILY')">Leer más</button>
+        </article>
+
+        <article class="card">
+          <div class="avatar news-avatar">
+            <img src="assets/ranma-1-2-remake-poster-Netflix.jpg" alt="">
+          </div>
+          <h4>Ranma ½ – Remake</h4>
+          <p>Nuevos rivales, humor y transformaciones con gran animación.</p>
+          <button class="btn btn-outline" onclick="showProfile('Ranma ½')">Leer más</button>
+        </article>
+
+      </div>
+    </section>
+
+
+   
+    <section id="music-player" class="container">
+      
+
+      <audio id="bgMusic" src="assets/musica/Music de fondo.mp3"></audio>
+
+      <div class="player-controls">
+        <button id="btnToggleMusic" class="music-btn">▶ Reproducir</button>
+        <button id="btnMute" class="music-btn">🔇 Silenciar</button>
+      </div>
+    </section>
+
+
+    
+    <section id="contact" class="container">
+      <h3>Contacto</h3>
+
+      <form id="contactForm" class="form" novalidate>
+
+        <label>Nombre
+          <input type="text" id="name" required />
+          <div class="error-message" id="error-name"></div>
+        </label>
+
+        <label>Correo
+          <input type="email" id="email" required />
+          <div class="error-message" id="error-email"></div>
+        </label>
+
+        <label>Mensaje
+          <textarea id="message" rows="4" required></textarea>
+          <div class="error-message" id="error-message"></div>
+        </label>
+
+        <div class="form-actions">
+          <button type="submit" class="btn">Enviar</button>
+          <button type="reset" id="btnReset" class="btn btn-outline">Limpiar</button>
+        </div>
+
+        <div id="formFeedback" class="form-feedback"></div>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="site-footer container">
+    <p>AnimeLab • Proyecto educativo — HTML • CSS • JavaScript</p>
+    <p>Abre el proyecto en Visual Studio Code para editar los archivos en /css, /js y /assets.
+<p>
+
+</p>
+© 2025 AnimeLab. Todos los derechos reservados.</p>
+<p>Redes Sociales</p>
+  </footer>
+ 
+  <div class="social-links">
+
+    
+    <a href="https://www.youtube.com" target="_blank" class="social-icon">
+      <svg viewBox="0 0 576 512" class="icon">
+        <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.3 64 
+                74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6C16 167 16 256 16 256s0 
+                89 10.3 131.9c6.3 23.6 24.8 42.2 48.3 48.5C117.3 448 
+                288 448 288 448s170.8 0 213.5-11.6c23.5-6.3 42-24.9 
+                48.3-48.5C560 345 560 256 560 256s0-89-10.3-131.9zM232 
+                336V176l142 80-142 80z"/>
+      </svg>
+    </a>
+
+    <a href="https://www.facebook.com" target="_blank" class="social-icon">
+      <svg viewBox="0 0 320 512" class="icon">
+        <path d="M279.1 288l14.2-92.7h-89.9v-60.2c0-25.4 
+                12.4-50.3 52.2-50.3h40.4V6.3S260.4 0 225.4 0c-73.2 
+                0-121.2 44.4-121.2 124.7V195H22.89V288h81.39v224h100.2V288h74.62z"/>
+      </svg>
+    </a>
+
+  
+    <a href="https://www.instagram.com" target="_blank" class="social-icon">
+      <svg viewBox="0 0 448 512" class="icon">
+        <path d="M224.1 141c-63.6 0-115 51.4-115 
+                115s51.4 115 115 115 115-51.4 115-115-51.4-115-115-115zm0 
+                190c-41.4 0-75-33.6-75-75s33.6-75 75-75 
+                75 33.6 75 75-33.6 75-75 
+                75zm146.4-194.3c0 14.9-12 26.8-26.8 
+                26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 
+                26.8-26.8 26.8 12 26.8 26.8zM398.8 
+                80C352.8 34 296.5 16 224.1 16S95.3 
+                34 49.3 80C3.3 126 0 182.3 0 
+                254.7s3.3 128.7 49.3 174.7C95.3 
+                475.3 151.6 492 224 492s128.7-16.7 
+                174.7-62.7c46-46 49.3-102.3 
+                49.3-174.7S444.8 126 398.8 80z"/>
+      </svg>
+    </a>
+
+  </div>
+</footer>
+
+
+ 
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <img id="lightboxImg" alt="Vista ampliada" />
+  </div>
+
+  
+<div id="profileModal" class="popup">
+  <div class="popup-box">
+      <p id="modalText" class="popup-message"></p>
+      <button id="closeProfileModal" class="popup-btn">Aceptar</button>
+  </div>
+</div>
+
+
+  <section id="about" class="about-section hidden">
+    <div class="about-content">
+      <h2>Acerca de AnimeLab</h2>
+
+      <p><strong>Desarrollador:</strong> Daniel Adrian Moo Can</p>
+      <p><strong>Grupo:</strong> TTD 4-A</p>
+      <p><strong>Asignatura:</strong> Desarrollo Web</p>
+
+      <p>
+        Mejorando un sitio web educativo mediante HTML, CSS y JavaScript.
+      </p>
+
+      <button id="closeAbout" class="btn">Cerrar</button>
+    </div>
+  </section>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
